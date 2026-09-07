@@ -195,12 +195,10 @@ def sidebar_config() -> tuple[MonitoringConfig, bool, bool, bool, str | None, st
     debug = st.sidebar.toggle("Show debug metrics", False)
 
     st.sidebar.subheader("AI Layman Analytics (OpenRouter)")
-    saved_key = load_env_api_key()
-    api_key = st.sidebar.text_input(
-        "OpenRouter API Key",
-        value=saved_key,
-        type="password",
-        help="OpenRouter API Key for generating plain-English analytical overviews.",
+    api_key = load_env_api_key()
+    st.sidebar.caption(
+        "The OpenRouter API key is read from the OPENROUTER_API_KEY environment "
+        "variable or the local .env file and is never displayed in the UI."
     )
     selected_model = st.sidebar.selectbox(
         "OpenRouter Model",
@@ -234,7 +232,10 @@ def render_ai_analytics_section(metrics, events, api_key: str, selected_model: s
 
     if generate_btn:
         if not api_key:
-            st.session_state.ai_error = "OpenRouter API Key is missing. Please enter your API key in the sidebar."
+            st.session_state.ai_error = (
+                "OpenRouter API Key is missing. Please set OPENROUTER_API_KEY in "
+                "your environment or local .env file and restart the app."
+            )
         else:
             with st.spinner(f"Analyzing session statistics with {selected_model} via OpenRouter…"):
                 client = OpenRouterClient(api_key=api_key, model=selected_model)

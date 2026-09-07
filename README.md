@@ -64,7 +64,7 @@ The application includes an AI-powered analytical assistant that translates raw 
 
 1. Configure your OpenRouter key:
    - Option A: Add `OPENROUTER_API_KEY=your_key` in a local `.env` file (copied from `.env.example`).
-   - Option B: Enter the API key directly in the sidebar input in the Streamlit app.
+   - Option B: Set the `OPENROUTER_API_KEY` environment variable (e.g. `$env:OPENROUTER_API_KEY="your_key"` in PowerShell). The key is never displayed in the app.
 2. Select your desired AI model in the sidebar dropdown (e.g. `meta-llama/llama-3.3-70b-instruct`, `openai/gpt-4o-mini`, `deepseek/deepseek-chat`, etc.).
 3. Under the **AI Layman Analytical Summary** section on the dashboard, click **✨ Generate Layman Summary** or use **📋 Offline Rule-Based Summary**.
 4. Download the generated professional PDF analytical report or review the summary directly on screen.
