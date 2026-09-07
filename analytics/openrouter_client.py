@@ -71,7 +71,7 @@ class OpenRouterClient:
         if not self.is_configured:
             return {
                 "success": False,
-                "error": "OpenRouter API key is missing. Please provide a key in the sidebar or .env file.",
+                "error": "OpenRouter API key is missing. Please set the OPENROUTER_API_KEY environment variable or add it to your local .env file.",
             }
 
         headers = {
